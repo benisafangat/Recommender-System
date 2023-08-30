@@ -177,7 +177,7 @@ Berikut adalah hasil model evaluasi metriks:
 
 ![metrics evaluasi](https://github.com/benisafangat/recommender-system/assets/70525105/d69bf724-f218-44c3-a7f4-f4b220b7967c)
 
-Pada grafik diatas, hasil performa model menggunakan metrics evaluasi MSE didapatkan bahwa nilai pada MSE pada data latih dan data validasi hampir mendekati, ini artinya model dapat memberikan performa yang cukup baik pada kasus ini.
+Pada grafik diatas, hasil performa model menggunakan metrics evaluasi MSE didapatkan bahwa nilai pada MSE pada data latih dan data validasi hampir mendekati, ini artinya model dapat memberikan performa yang baik atau goodfit pada kasus ini.
 
 
 ## Kesimpulan
