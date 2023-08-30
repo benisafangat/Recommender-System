@@ -1,13 +1,23 @@
 # Laporan Proyek Machine Learning: Recommender System
 
 ## Project Overview
-Dengan ledakan informasi dan pilihan di era digital, menemukan film yang sesuai dengan preferensi pengguna semakin sulit. Platform streaming seperti Netflix, iQiyi, dan WeTV menawarkan ribuan film, memerlukan solusi untuk membantu pengguna memilih. Inilah tempat sistem rekomendasi film berperan.
+Dalam era digital saat ini, jumlah informasi dan konten yang tersedia secara online terus berkembang pesat. Hal ini telah memunculkan tantangan baru dalam membantu pengguna menavigasi dan menemukan informasi yang paling relevan dan bermanfaat bagi mereka. Sistem rekomendasi adalah solusi yang digunakan oleh banyak platform untuk memberikan pengalaman yang lebih personal dan efisien kepada pengguna. Dua pendekatan yang dominan dalam pengembangan sistem rekomendasi adalah content-based filtering dan collaborative filtering.
 
-Sistem ini menggunakan algoritma dan data untuk menganalisis riwayat tontonan, preferensi, dan penilaian pengguna. Dengan informasi ini, sistem dapat memprediksi film yang mungkin disukai pengguna di masa depan. Data kolaboratif juga digunakan untuk mengidentifikasi kesamaan preferensi antar pengguna.
+1. Content-Based Filtering:
 
-Namun, ada tantangan dalam sistem ini, terutama pada pengguna dan film baru yang informasinya terbatas. Kian banyaknya pengguna dan film juga meningkatkan kompleksitas analisis. Oleh karena itu, perusahaan teknologi terus mengembangkan algoritma dan teknik untuk meningkatkan kualitas rekomendasi.
+Content-based filtering adalah metode yang didasarkan pada analisis atribut konten dari produk atau konten yang ada. Konsep dasar di balik pendekatan ini adalah bahwa pengguna cenderung tertarik pada item yang memiliki atribut yang serupa dengan item yang telah mereka sukai sebelumnya. Misalnya, dalam rekomendasi film, sistem content-based akan menganalisis atribut seperti genre, pemeran, sutradara, dan ulasan untuk merekomendasikan film dengan atribut serupa dengan film yang telah disukai pengguna.
 
-Secara keseluruhan, sistem rekomendasi film membantu mengatasi masalah kelebihan informasi, mempermudah pengguna menemukan film yang sesuai, dan meningkatkan keterlibatan pengguna. Dengan perkembangan teknologi, sistem ini terus ditingkatkan untuk memberikan rekomendasi yang lebih akurat dan personal.
+2. Collaborative Filtering:
+
+Collaborative filtering berfokus pada pola interaksi dan perilaku pengguna. Pendekatan ini berasumsi bahwa jika dua pengguna memiliki sejarah preferensi yang mirip atau jika mereka berinteraksi dengan item yang sama, mereka cenderung memiliki preferensi yang serupa untuk item yang belum pernah mereka lihat sebelumnya. Misalnya, jika dua pengguna yang memiliki sejarah pembelian yang mirip menyukai produk A, sistem collaborative filtering dapat merekomendasikan produk A kepada pengguna lain yang memiliki sejarah pembelian yang mirip.
+
+Kelebihan Kombinasi Kedua Pendekatan:
+
+Kedua pendekatan ini memiliki kelebihan dan kelemahan masing-masing. Content-based filtering memiliki kelebihan dalam memberikan rekomendasi yang sesuai dengan preferensi yang spesifik dan dapat memitigasi masalah cold start, yaitu ketika informasi perilaku pengguna terbatas. Di sisi lain, collaborative filtering mengatasi masalah ketidakmampuan sistem untuk memahami atribut kompleks dari suatu item. Namun, collaborative filtering cenderung mengalami masalah dengan pengguna baru yang tidak memiliki sejarah interaksi.
+
+Kombinasi content-based filtering dan collaborative filtering dapat mengatasi kelemahan masing-masing metode. Dengan menggabungkan kedua pendekatan ini, sistem rekomendasi dapat menghasilkan rekomendasi yang lebih akurat dan personal. Dalam hal ini, content-based filtering memberikan wawasan tentang atribut dan preferensi pengguna, sementara collaborative filtering memungkinkan sistem untuk mengidentifikasi pola perilaku yang mendasari preferensi pengguna.
+
+Dengan pertumbuhan data yang semakin besar dan kompleksitas preferensi pengguna yang semakin tinggi, pendekatan yang menggabungkan content-based filtering dan collaborative filtering menjadi semakin relevan dalam mengembangkan sistem rekomendasi yang efektif dan berdaya guna dalam berbagai konteks, seperti e-commerce, platform media sosial, dan layanan hiburan.
 
 ## Business Understanding
 
@@ -21,14 +31,24 @@ Membuat sistem rekomendasi yang akurat berdasarkan ratings dan history pengguna 
 Solusi yang dapat diterapkan yaitu menggunakan pendekatan *machine learning* dengan teknik sistem rekomendasi:
 
 * Content-Based Filtering: Algoritma yang merekomendasikan item serupa dengan preferensi pengguna, berdasarkan aktivitas atau umpan balik yang diberikan sebelumnya.
-![content base](https://github.com/benisafangat/recommender-system/assets/70525105/5e70790f-bbdc-4916-9ba3-1dd28603924f)
+
+![content base](https://github.com/benisafangat/recommender-system/assets/70525105/65d4c765-45f2-4656-9c25-92ff238d196d)
+
 
 * Collaborative Filtering: Algoritma yang mengandalkan pendapat dari komunitas pengguna. Metode ini tidak memerlukan atribut khusus untuk setiap item.
-![cola](https://github.com/benisafangat/recommender-system/assets/70525105/6f683817-4e82-4a30-9610-12444f52037a)
 
+
+![cola](https://github.com/benisafangat/recommender-system/assets/70525105/55b60160-2133-41a9-83a5-eb7870d8a6d4)
+
+
+Sistem rekomendasi yang akurat memiliki potensi untuk memberikan sejumlah manfaat signifikan bagi bisnis. Berikut beberapa contoh konkret mengenai manfaat tersebut:
+* Peningkatan Retensi Pelanggan
+* Peningkatan Penjualan Silang (Cross-Selling) dan Penjualan Naik (Upselling)
+* Personalisasi Pengalaman Pelanggan
+* Optimasi Persediaan dan Manajemen Stok
 
 ## Data Understanding
-Dataset yang digunakan dalam proyek *machine learning* ini berasal dari Movie Recommendation Data yang diperoleh dari situs Kaggle. Dalam kasus ini, data memiliki 4 file terpisah mengenai links, movie, ratings dan tags. Link datasets dapat ditemukan pada tautan berikut: https://www.kaggle.com/datasets/rohan4050/movie-recommendation-data.
+Dataset yang digunakan dalam proyek *machine learning* ini berasal dari Movie Recommendation Data yang diperoleh dari situs Kaggle. Dalam kasus ini, data memiliki 4 file terpisah mengenai links, movie, ratings dan tags. Datasets yang digunakan mempunyai total data sebanyak 124003 data dengan sebaran data sebanyak 9742 data links, 9742 data movies, 100836 data ratings, dan 3683 data tags. Link datasets dapat ditemukan pada tautan berikut: https://www.kaggle.com/datasets/rohan4050/movie-recommendation-data.
 
 ### Univariate Exploratory Data Analysis
 Variabel-variabel pada Movie Recommendation Data dataset adalah sebagai berikut:
@@ -38,13 +58,13 @@ Variabel-variabel pada Movie Recommendation Data dataset adalah sebagai berikut:
 * Tags : Data kata kunci untuk movie
 
 ## Data Preparation
-* Mengatasi Missing Value: Menghapus data yang terdapat missing value karena hal ini dapat mempengaruhi performa model.
+* Mengatasi Missing Value: Menghapus data yang terdapat missing value. Hal ini dilakukan karena apabila terdapat data yang kosong dapat mempengaruhi performa model dalam melakukan rekomendasi.
 * Menggabungkan Variabe: Variabel dapat digabungkan berdasarkan ID yang bersifat unik dari yang lain.
 * Mengurutan Data: Data diurutkan berdasarkan movieId secara berurutan (ascending).
 * Mengatasi Duplikasi Data: Data yang memiliki nilai atau konten yang identik diatasi dengan cara dihapus menggunakan fungsi drop_duplicates().
 * Konversi Data Menjadi List: Data diubah menjadi bentuk daftar (list).
 * Membuat Dictionary: Menentukan pasangan key-value pada data id, movie_id, dan genre yang telah kita siapkan sebelumnya.
-* Membagi Data: Dataset yang akan digunakan pada tahap *modeling* dibagi menjadi data latih dan data validasi.
+* Membagi Data: Dataset yang akan digunakan pada tahap *modeling* dibagi menjadi data latih dan data validasi. Data yang digunakan harus dipisah agar memudahkan model dalam melakukan pelatihan.
 
 ## Modeling and Result
 
@@ -108,7 +128,7 @@ Kekurangan: Metrik ini memberikan bobot yang relatif lebih tinggi pada kesalahan
 Dengan menggunakan MSE sebagai metrik evaluasi, dapat menilai seberapa baik performa model dalam melakukan rekomendasi movie. Semakin kecil nilai MSE, semakin dekat garis regresi model dengan titik data aktual, dan semakin akurat prediksi model.
 Berikut adalah hasil model evaluasi metriks:
 
-![eva](https://github.com/benisafangat/recommender-system/assets/70525105/48ce96e5-5166-4da1-8e1a-99cff2d1819c)
+![metrics evaluasi](https://github.com/benisafangat/recommender-system/assets/70525105/d69bf724-f218-44c3-a7f4-f4b220b7967c)
 
 
 ## Kesimpulan
