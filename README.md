@@ -59,11 +59,11 @@ Variabel-variabel pada Movie Recommendation Data dataset adalah sebagai berikut:
 
 ## Data Preparation
 * Mengatasi Missing Value: Menghapus data yang terdapat missing value. Hal ini dilakukan karena apabila terdapat data yang kosong dapat mempengaruhi performa model dalam melakukan rekomendasi.
-* Menggabungkan Variabe: Variabel dapat digabungkan berdasarkan ID yang bersifat unik dari yang lain.
-* Mengurutan Data: Data diurutkan berdasarkan movieId secara berurutan (ascending).
-* Mengatasi Duplikasi Data: Data yang memiliki nilai atau konten yang identik diatasi dengan cara dihapus menggunakan fungsi drop_duplicates().
-* Konversi Data Menjadi List: Data diubah menjadi bentuk daftar (list).
-* Membuat Dictionary: Menentukan pasangan key-value pada data id, movie_id, dan genre yang telah kita siapkan sebelumnya.
+* Menggabungkan Variabe: Variabel dapat digabungkan berdasarkan ID yang bersifat unik dari yang lain. Tujuan dari menggabungkan variabel adalah untuk meningkatkan kualitas rekomendasi yang diberikan kepada pengguna, dengan memanfaatkan informasi yang lebih lengkap dan mendalam tentang preferensi, perilaku, atau karakteristik pengguna dan item.
+* Mengurutan Data: Data diurutkan berdasarkan movieId secara berurutan (ascending). Hal ini dilakukan untuk mempermudah keterbacaan data dalam mengatasi duplikasi data.
+* Mengatasi Duplikasi Data: Data yang memiliki nilai atau konten yang identik diatasi dengan cara dihapus menggunakan fungsi drop_duplicates(), karena data yang digunakan hanya data unik untuk dimasukkan ke dalam proses pemodelan
+* Konversi Data Menjadi List: Data diubah menjadi bentuk daftar (list). Tujuan utama dari mengkonversi data menjadi list adalah untuk memudahkan pemrosesan, manipulasi, dan analisis lebih lanjut.
+* Membuat Dictionary: Menentukan pasangan key-value pada data id, movie_id, dan genre yang telah disiapkan sebelumnya. Sama seperti konversi data menjadi list berfungsi untuk memberikan struktur data yang terorganisir, efisien dalam akses dan manipulasi, serta memudahkan analisis dan pengolahan data.
 * Membagi Data: Dataset yang akan digunakan pada tahap *modeling* dibagi menjadi data latih dan data validasi. Data yang digunakan harus dipisah agar memudahkan model dalam melakukan pelatihan.
 
 ## Modeling and Result
@@ -75,19 +75,27 @@ Variabel-variabel pada Movie Recommendation Data dataset adalah sebagai berikut:
 
 Berikut ini adalah film-film yang disukai oleh pengguna pada masa lalu:
 
-![image](https://github.com/benisafangat/recommender-system/assets/70525105/4f179313-261c-4ba7-83ea-2e72743c5d8f)
+
+![content-base hasil 1](https://github.com/benisafangat/recommender-system/assets/70525105/40a3117a-c916-455e-8b2d-3aed51d43c36)
+
 
 Dari hasil di atas, terlihat bahwa pengguna menyukai film berjudul "Sabrina" (1995) dengan genre comedy dan romance. Oleh karena itu, berikut adalah hasil rekomendasi lima teratas berdasarkan algoritma Content-Based Filtering:
 
-![image](https://github.com/benisafangat/recommender-system/assets/70525105/50d0d644-483b-4049-ab87-d9bbc8ec2ebd)
 
-Dari hasil di atas, terlihat bahwa film dengan genre comedy dan romance menjadi rekomendasi utama dari sistem. Rekomendasi ini didasarkan pada preferensi penonton atau pengguna di masa lalu. 
+![content-base hasil 2](https://github.com/benisafangat/recommender-system/assets/70525105/b6a27a11-afb8-42fa-94f3-aa40a848c9f2)
+
+
+Dari hasil di atas, terlihat bahwa film dengan genre comedy dan romance menjadi rekomendasi utama dari sistem. Rekomendasi ini didasarkan pada preferensi penonton atau pengguna di masa lalu. Berdasarkan evaluasi metrics yaitu: dari 5 item yang direkomendasikan, semuanya merekomendasikan genre yang relevan yaitu comedy dan romance. Artinya, model menghasilkan precision sebesar 5/5 atau 100% dan recall sebesar 5/5 atau 100% juga.
 
 ### Collaborative Filtering
+Algoritma ini mengukur kesamaan antara movie-movie berdasarkan seberapa sering pengguna satu dengan yang lainnya menilai atau menyukai movie yang sama terhadap movie tersebut.
 * Training: Proses training pada model ini menggunakan Optimizer Adam dengan Learning Rate: 0.0001, Loss: BinaryCrossentropy(), Metrics: RootMeanSquaredError().
+Penggunaan Optimizer Adam pada model ini yaitu optimizer Adam stabil dalam berbagai macam data dan mampu menghasilkan performa yang baik. Serta penggunaan Learning Rate (0.0001) yaitu karena dengan nilai tersebut dapat memberikan performa hasil yang baik pada model ini.
 * Rekomendasi Movie: hasil dari proses training yaitu model dicoba untuk membuat rekomendasi. berikut adalah hasilnya.
+
   
-![image](https://github.com/benisafangat/recommender-system/assets/70525105/adb3384d-9d9f-40c2-83e2-58aca3dbc3a4)
+![collaborative filtering hasil](https://github.com/benisafangat/recommender-system/assets/70525105/9546fb3f-7c07-4239-86df-cb09ee7bc991)
+
 
 Dari hasil di atas, terlihat bahwa film dengan genre crime, horror, dan thriller memiliki peringkat tertinggi. Selanjutnya, sistem merekomendasikan sepuluh film teratas dengan genre crime dan drama.
 
@@ -104,9 +112,12 @@ Proses penggunaan Cosine Similarity dalam content-based filtering adalah sebagai
 Penentuan Rekomendasi: Item-item yang memiliki Cosine Similarity tinggi dengan item yang disukai pengguna atau item yang sedang dilihat dianggap lebih relevan dan kemungkinan direkomendasikan.
 
 
-![image](https://github.com/benisafangat/recommender-system/assets/70525105/529de88c-8354-45ad-b28b-b4083478d91c)
+![cosine](https://github.com/benisafangat/recommender-system/assets/70525105/fd9a1c2c-b5a4-40f3-a170-46b869e45ff3)
+
 
 Dengan cosine similarity, model berhasil mengidentifikasi kesamaan antara satu movie dengan restoran lainnya. Shape (1554, 1554) merupakan ukuran matriks similarity dari data yang dimiliki. Berdasarkan data yang ada, matriks di atas sebenarnya berukuran 1554 movie x 1554 movie (masing-masing dalam sumbu X dan Y). Artinya, model mengidentifikasi tingkat kesamaan pada 1554 nama movie.  
+
+Berdasarkan hasil cosine similarity diatas data movie pada sumbu x memiliki kesamaan dengan data movie pada sumbu y, dapat dilihat movie Country Girl, The (1954) teridentifikasi sama *(similar)* dengan movie Prime of Miss Jean Brodie, The (1969) dan Doors, The (1991). 
 
 ### Collaborative Filtering
 Proses evaluasi pada model machine learning ini, metrik yang digunakan adalah mean squared error (MSE). Metriks ini mengukur seberapa dekat hasil prediksi dari model dengan nilai sesungguhnya (titik data aktual) pada data pengujian. MSE menghitung selisih kuadrat antara nilai prediksi (Yi_pred) dan nilai sesungguhnya (Yi) dari setiap titik data, kemudian mengambil rata-rata dari selisih kuadrat tersebut untuk mendapatkan MSE. Berikut adalah rumusnya:
@@ -130,10 +141,16 @@ Berikut adalah hasil model evaluasi metriks:
 
 ![metrics evaluasi](https://github.com/benisafangat/recommender-system/assets/70525105/d69bf724-f218-44c3-a7f4-f4b220b7967c)
 
+Pada grafik diatas, hasil performa model menggunakan metrics evaluasi MSE didapatkan bahwa nilai pada MSE pada data latih dan data validasi hampir mendekati, ini artinya model dapat memberikan performa yang cukup baik pada kasus ini.
+
 
 ## Kesimpulan
-Berdasarkan teknik pemodelan yang telah diterapkan, didapatkan bahwa kedua model dapat menghasilkan performa yang baik terhadap rekomendasi movie yang dihasilkan.
+* Berdasarkan teknik pemodelan yang telah diterapkan, didapatkan bahwa kedua model dapat menghasilkan performa yang baik terhadap rekomendasi movie yang dihasilkan.
+* Pada teknik collaborative filtering, nilai performa MSE yang didapatkan cukup baik dengan nilai rmse untuk data latih sebesar 0.1776 dan data validasi sebesar 0.1970. Serta nilai loss untuk data latih sebesar 0.5858 dan data validasi sebesar 0.6022.
+* Untuk saran perbaikan dimasa yang akan datang yaitu gunakan datasets yang lebih besar dan serta melakukan tuning hyperparameter untuk mencapai performa yang maksimal.
 
 ## Referensi
 * Lops, P., De Gemmis, M., & Semeraro, G. (2011). Content-based recommender systems: State of the art and trends. Recommender systems handbook, 73-105.
 * Shakirova, E. (2017, February). Collaborative filtering for music recommender system. In 2017 IEEE Conference of Russian Young Researchers in Electrical and Electronic Engineering (EIConRus) (pp. 548-550). IEEE.
+* Lubis, Y. I., Napitupulu, D. J., & Dharma, A. S. (2020). Implementasi Metode Hybrid Filtering (Collaborative dan Content-based) untuk Sistem Rekomendasi Pariwisata. In 12th Conference on Information Technology and Electrical Engineering (pp. 28-35).
+* https://medium.com/@ahmadsholihin1705/rekomendasi-menggunakan-content-based-filtering-dan-collaborative-filtering-2aab2aec8ebe
