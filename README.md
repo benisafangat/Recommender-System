@@ -64,7 +64,7 @@ Variabel-variabel pada Movie Recommendation Data dataset adalah sebagai berikut:
 * Mengatasi Duplikasi Data: Data yang memiliki nilai atau konten yang identik diatasi dengan cara dihapus menggunakan fungsi drop_duplicates(), karena data yang digunakan hanya data unik untuk dimasukkan ke dalam proses pemodelan
 * Konversi Data Menjadi List: Data diubah menjadi bentuk daftar (list). Tujuan utama dari mengkonversi data menjadi list adalah untuk memudahkan pemrosesan, manipulasi, dan analisis lebih lanjut.
 * Membuat Dictionary: Menentukan pasangan key-value pada data id, movie_id, dan genre yang telah disiapkan sebelumnya. Sama seperti konversi data menjadi list berfungsi untuk memberikan struktur data yang terorganisir, efisien dalam akses dan manipulasi, serta memudahkan analisis dan pengolahan data.
-* Membagi Data: Dataset yang akan digunakan pada tahap *modeling* dibagi menjadi data latih dan data validasi. Data yang digunakan harus dipisah agar memudahkan model dalam melakukan pelatihan.
+* Membagi Data: Dataset yang akan digunakan pada tahap *modeling* dibagi menjadi data latih dan data validasi. Data yang digunakan harus dipisah agar memudahkan model dalam melakukan pelatihan. Rasio pembagian datasets yaitu 70% untuk data latih dan 30% untuk data validasi.
 
 ## Modeling and Result
 
@@ -75,15 +75,19 @@ Variabel-variabel pada Movie Recommendation Data dataset adalah sebagai berikut:
 
 Berikut ini adalah film-film yang disukai oleh pengguna pada masa lalu:
 
-
-![content-base hasil 1](https://github.com/benisafangat/recommender-system/assets/70525105/40a3117a-c916-455e-8b2d-3aed51d43c36)
-
+**No**|**Id**|**Movie Name**|**Genre**
+:-----:|:-----:|:-----:|:-----:
+4|	7|	Sabrina (1995)|	Comedy/Romance
 
 Dari hasil di atas, terlihat bahwa pengguna menyukai film berjudul "Sabrina" (1995) dengan genre comedy dan romance. Oleh karena itu, berikut adalah hasil rekomendasi lima teratas berdasarkan algoritma Content-Based Filtering:
 
-
-![content-base hasil 2](https://github.com/benisafangat/recommender-system/assets/70525105/b6a27a11-afb8-42fa-94f3-aa40a848c9f2)
-
+**No**|**Movie Name**|**Genre**
+:-----:|:-----:|:-----:
+0|	Coming to America (1988)|	Comedy/Romance
+1|	Woman of the Year (1942)|	Comedy/Romance
+2|	Crossing Delancey (1988)|	Comedy/Romance
+3|	Desk Set (1957)|	Comedy/Romance
+4|	Legally Blonde (2001)|	Comedy/Romance
 
 Dari hasil di atas, terlihat bahwa film dengan genre comedy dan romance menjadi rekomendasi utama dari sistem. Rekomendasi ini didasarkan pada preferensi penonton atau pengguna di masa lalu. Berdasarkan evaluasi metrics yaitu: dari 5 item yang direkomendasikan, semuanya merekomendasikan genre yang relevan yaitu comedy dan romance. Artinya, model menghasilkan precision sebesar 5/5 atau 100% dan recall sebesar 5/5 atau 100% juga.
 
@@ -93,9 +97,31 @@ Algoritma ini mengukur kesamaan antara movie-movie berdasarkan seberapa sering p
 Penggunaan Optimizer Adam pada model ini yaitu optimizer Adam stabil dalam berbagai macam data dan mampu menghasilkan performa yang baik. Serta penggunaan Learning Rate (0.0001) yaitu karena dengan nilai tersebut dapat memberikan performa hasil yang baik pada model ini.
 * Rekomendasi Movie: hasil dari proses training yaitu model dicoba untuk membuat rekomendasi. berikut adalah hasilnya.
 
-  
-![collaborative filtering hasil](https://github.com/benisafangat/recommender-system/assets/70525105/9546fb3f-7c07-4239-86df-cb09ee7bc991)
+Showing Recommendations for users: 7
 
+Movie with High Ratings from user
+
+**No**|**Movie Name**|**Genre**
+:-----:|:-----:|:-----:
+0| Silence of the Lambs, The (1991)| Crime/Horror/Thriller
+1| Psycho (1960)| Crime/Horror
+2| Terminator, The (1984)| Action/Sci-Fi/Thriller
+3| Seven Samurai (Shichinin no samurai) (1954)| Action/Adventure/Drama
+
+Top 10 Movie Recommendation
+
+**No**|**Movie Name**|**Genre**
+:-----:|:-----:|:-----:
+0| Shawshank Redemption, The (1994)| Crime/Drama
+1| Godfather, The (1972)| Crime/Drama
+2| Rear Window (1954)| Mystery/Thriller
+3| Paths of Glory (1957)| Drama/War
+4| One Flew Over the Cuckoo's Nest (1975)| Drama
+5| Princess Bride, The (1987)| Action/Adventure/Comedy/Fantasy/Romance
+6| Lawrence of Arabia (1962)| Adventure/Drama/War
+7| Goodfellas (1990)| Crime/Drama
+8| Ran (1985)| Drama/War
+9| Dark Knight, The (2008)| Action/Crime/Drama/IMAX
 
 Dari hasil di atas, terlihat bahwa film dengan genre crime, horror, dan thriller memiliki peringkat tertinggi. Selanjutnya, sistem merekomendasikan sepuluh film teratas dengan genre crime dan drama.
 
@@ -112,8 +138,18 @@ Proses penggunaan Cosine Similarity dalam content-based filtering adalah sebagai
 Penentuan Rekomendasi: Item-item yang memiliki Cosine Similarity tinggi dengan item yang disukai pengguna atau item yang sedang dilihat dianggap lebih relevan dan kemungkinan direkomendasikan.
 
 
-![cosine](https://github.com/benisafangat/recommender-system/assets/70525105/fd9a1c2c-b5a4-40f3-a170-46b869e45ff3)
-
+**Movie Name**|**Prime of Miss Jean Brodie, The (1969)**|**Coraline (2009)**|**Men in Black II (a.k.a. MIIB) (a.k.a. MIB 2) (2002)**|**Fly Away Home (1996)**|**Doors, The (1991)**
+:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
+Independence Day (a.k.a. ID4) (1996)|	0.000000|	0.178324|	0.752571|	0.270412|	0.000000
+Match Factory Girl, The (Tulitikkutehtaan tyttö) (1990)|	0.600342|	0.000000|	0.287774|	0.000000|	0.600342
+Penny Serenade (1941)|	0.531842|	0.000000|	0.000000|	0.000000|	0.531842
+Batman v Superman: Dawn of Justice (2016)|	0.000000|	0.299805|	0.710506|	0.255297|	0.000000
+Lion King, The (1994)|	0.175928|	0.286090|	0.000000|	0.538419|	0.175928
+Once Bitten (1985)|	0.000000|	0.000000|	0.172784|	0.000000|	0.000000
+Philadelphia Story, The (1940)|	0.433964|	0.000000|	0.208021|	0.000000|	0.433964
+Country Girl, The (1954)|	1.000.000|	0.000000|	0.000000|	0.000000|	1.000.000
+Rare Exports: A Christmas Tale (Rare Exports) (2010)|	0.000000|	0.000000|	0.611265|	0.000000|	0.000000
+Solo: A Star Wars Story (2018)|	0.000000|	0.000000|	0.698339|	0.663164|	0.000000
 
 Dengan cosine similarity, model berhasil mengidentifikasi kesamaan antara satu movie dengan restoran lainnya. Shape (1554, 1554) merupakan ukuran matriks similarity dari data yang dimiliki. Berdasarkan data yang ada, matriks di atas sebenarnya berukuran 1554 movie x 1554 movie (masing-masing dalam sumbu X dan Y). Artinya, model mengidentifikasi tingkat kesamaan pada 1554 nama movie.  
 
