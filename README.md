@@ -147,7 +147,7 @@ Pada grafik diatas, hasil performa model menggunakan metrics evaluasi MSE didapa
 ## Kesimpulan
 * Berdasarkan teknik pemodelan yang telah diterapkan, didapatkan bahwa kedua model dapat menghasilkan performa yang baik terhadap rekomendasi movie yang dihasilkan.
 * Pada teknik collaborative filtering, nilai performa MSE yang didapatkan cukup baik dengan nilai rmse untuk data latih sebesar 0.1776 dan data validasi sebesar 0.1970. Serta nilai loss untuk data latih sebesar 0.5858 dan data validasi sebesar 0.6022.
-* Untuk saran perbaikan dimasa yang akan datang yaitu gunakan datasets yang lebih besar dan serta melakukan tuning hyperparameter untuk mencapai performa yang maksimal.
+* Untuk saran perbaikan dimasa yang akan datang yaitu gunakan datasets yang lebih besar dan melakukan tuning hyperparameter untuk mencapai performa yang maksimal.
 
 ## Referensi
 * Lops, P., De Gemmis, M., & Semeraro, G. (2011). Content-based recommender systems: State of the art and trends. Recommender systems handbook, 73-105.
